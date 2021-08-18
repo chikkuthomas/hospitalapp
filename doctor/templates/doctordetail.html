@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 shadow">
+
+            <div class="card mb-3 mt-5 p-2" style="max-width: 800px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{doctor.image.url}}" class="img-fluid rounded-start mt-3 " alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr.</b>{{doctor.doctor_name}}</h5>
+                            <p class="card-text"><b>{{doctor.specialist}}</b></p>
+                            <p class="card-text text-primary"><b>{{doctor.speciality}}</b></p>
+                            <p class="card-text"><em>{{doctor.about}}</em></p>
+                            <p class="card-text"><b>Availability:</b><em>{{doctor.availability}}</em></p>
+                            <p class="card-text"><b>Start Time:{{doctor.start_time}}</b></p>
+                            <p class="card-text"><b>End Time:{{doctor.end_time}}</b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+
+{%endblock%}

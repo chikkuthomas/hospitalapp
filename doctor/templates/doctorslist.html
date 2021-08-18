@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8 shadow">
+            {%for doctor in doctors%}
+            <div class="card mb-3 mt-5 p-2" style="max-width: 800px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{doctor.image.url}}" class="img-fluid rounded-start mt-3 " alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">Dr.</b>{{doctor.doctor_name}}</h5>
+                            <p class="card-text"><b>{{doctor.specialist}}</b></p>
+                            <p class="card-text text-primary"><b>{{doctor.speciality}}</b></p>
+                            <p class="card-text"><b>Availability:</b><em>{{doctor.availability}}</em></p>
+                            <p class="card-text"><b>Start Time:{{doctor.start_time}}</b></p>
+                            <p class="card-text"><b>End Time:{{doctor.end_time}}</b></p>
+                        </div>
+                        <div class="ms-5 pe-5">
+                            <a href="{%url 'doctorupdate' doctor.id%}" class="btn ms-5  btn-outline-primary"><b>Edit</b></a>
+                            <a href="{%url 'doctordetail' doctor.id%}" class="btn ms-2  text-success btn-outline-warning"><b>View</b></a>
+                            <a href="{%url 'doctorremove' doctor.id%}" class="btn ms-2  btn-outline-danger"><b>Delete</b></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {%endfor%}
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>
+
+
+{%endblock%}

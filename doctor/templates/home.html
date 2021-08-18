@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{%extends 'base.html'%}
+{%block body_block%}
+<div class="container-fluid">
+    <h1 class="mt-2 text-light">Welcome Admin </h1>
+    <div class="row mt-2">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <div class="wrapper">
+                <a href="{%url 'doctoradd'%}" class="btn  text"> <h1>Add Doctors</h1></a><br>
+            </div>
+            <div class="wrapper mt-2">
+                 <a href="{%url 'doctorlist'%}" class="btn  text1"> <h1>List Of Doctors</h1></a>
+            </div>
+            <div class="wrapper mt-2">
+                 <a href="{%url 'patient_list'%}" class="btn text2"> <h1>Booked Patients</h1></a>
+            </div>
+
+
+        </div>
+        <div class="col-4"></div>
+    </div>
+
+</div>
+
+{%endblock%}
+
+

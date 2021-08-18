@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=B612&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=B612:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
+body {margin:0;
+background:url("https://images.pexels.com/photos/5863395/pexels-photo-5863395.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")}
+
+
+.icon-bar {
+  width: 100%;
+  background-color: rgb(30, 185, 206);
+  overflow: auto;
+}
+
+.icon-bar a {
+  float: left;
+  width: 20%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #0430aa;
+}
+li{
+font-family: 'B612', sans-serif;
+}
+h1{
+font-family: 'Abril Fatface', cursive;
+}
+.text {
+  background-color: rgb(255, 255, 255);
+  color: rgba(15, 134, 231, 0.575);
+  font-size: 10vw;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
+  width: 25%;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+}
+.text1{
+  background-color: rgb(255, 255, 255);
+  color: rgba(15, 134, 231, 0.575);
+  font-size: 10vw;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
+  width: 25%;
+  text-align: center;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+}
+.text2{
+  background-color: rgb(255, 255, 255);
+  color: rgba(15, 134, 231, 0.575);
+  font-size: 10vw;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 10px;
+  width: 25%;
+  text-align: center;
+  position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: screen;
+}
