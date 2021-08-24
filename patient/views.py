@@ -6,6 +6,7 @@ from doctor.models import Doctors
 from .models import Patients
 from django.views.generic import TemplateView,ListView,DetailView,CreateView,DeleteView
 
+
 # registration
 class UserRegistrationView(TemplateView):
     form_class=forms.RegistrationForm
@@ -50,6 +51,7 @@ class SignOutView(TemplateView):
     def get(self,request, *args, **kwargs):
         logout(request)
         return redirect("signin")
+
 
 class PatientHome(TemplateView):
     template_name="patient_home.html"
