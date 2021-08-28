@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
 from .models import Doctors
-from .forms import DoctorAddForm,DoctorUpdateForm
-from django.views.generic import TemplateView,ListView,DetailView,CreateView,DeleteView
+from .forms import DoctorAddForm,DoctorUpdateForm,PatientUpdateForm
+from django.views.generic import TemplateView,ListView,DetailView,CreateView,DeleteView,UpdateView
 from patient.models import Patients
+from django.urls import reverse_lazy
 from django.contrib import messages
 
 
@@ -20,21 +21,6 @@ class DoctorCreateView(CreateView):
         if form.is_valid():
             form.save()
             return redirect("home")
-# def doctoradd(request):
-#     context={}
-#     form=DoctorAddForm()
-#     context["form"]=form
-#     if request.method=="POST":
-#         form=DoctorAddForm(request.POST,request.FILES) #to get image file
-#         if form.is_valid():
-#             form.save()
-#         else:
-#             context["form"] = form
-#             return render(request, "doctoraddform.html", context)
-#
-#     return render(request,"doctoraddform.html",context)
-
-
 
 class DoctorsListView(ListView):
     template_name = "doctorslist.html"
@@ -70,11 +56,26 @@ class RemoveDoctor(DeleteView):
         doctor.delete()
         return redirect("doctorlist")
 
-class PatientsListView(ListView):
+class PatientsListView(TemplateView):
     template_name = "patient_details.html"
-    model=Patients
-    context_object_name = "patients"
+    context={}
+    def get(self, request, *args, **kwargs):
+        booking_count=Patients.objects.filter(status="booked_slot").count()
+        self.context["booking_count"]=booking_count
+        patients=Patients.objects.filter(status="booked_slot")
+        self.context["patients"] = patients
+        appointed_count=Patients.objects.filter(status="appointed").count()
+        self.context["appointed_count"] = appointed_count
+        appointed=Patients.objects.filter(status="appointed")
+        self.context["appointed"] = appointed
+        return render(request,self.template_name,self.context)
 
+class PatientUpdate(UpdateView):
+    model = Patients
+    template_name = "patientupdate.html"
+    pk_url_kwarg = 'id'
+    form_class = PatientUpdateForm
+    success_url = reverse_lazy("home")
 
 
 

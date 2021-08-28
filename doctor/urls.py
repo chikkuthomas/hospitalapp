@@ -8,5 +8,6 @@ urlpatterns=[
     path("doctordetail/<int:id>",views.DoctorDetailView.as_view(),name="doctordetail"),
     path("doctor_remove/<int:id>",views.RemoveDoctor.as_view(),name="doctorremove"),
     path("patient_details", views.PatientsListView.as_view(), name="patient_list"),
+    path("booking/update/<int:id>", views.PatientUpdate.as_view(), name="update_appoinments"),
 
 ]

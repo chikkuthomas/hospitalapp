@@ -1,6 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 from .models import Doctors
+from patient.models import Patients
 
 class DoctorAddForm(ModelForm):
     class Meta:
@@ -34,4 +35,17 @@ class DoctorUpdateForm(ModelForm):
             "end_time": forms.NumberInput(attrs={"class": "form-control","type":"time"})
         }
 
+class PatientUpdateForm(ModelForm):
+    class Meta:
+        model=Patients
+        fields=[
+            "patient_name","doctor","age","time_slot","status"
+        ]
+        widgets={
+            "status":forms.Select(attrs={"class": "form-select"}),
+            "time_slot": forms.NumberInput(attrs={"class": "form-control","type":"time"}),
+            "patient_name":forms.TextInput(attrs={"class":"form-control","readonly":True}),
+            "doctor": forms.TextInput(attrs={"class": "form-control", "readonly": True}),
+            "age": forms.NumberInput(attrs={"class": "form-control", "readonly": True})
+        }
 

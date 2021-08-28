@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Patient Name:{{patient.patient_name}}</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Doctor:{{patient.doctor.doctor_name}}</h6>
-                    <p class="card-text">Time Slot:{{patient.doctor.start_time}} - {{patient.doctor.end_time}}</p>
+                    <p class="card-text">Time Slot: {{patient.time_slot}}</p>
                     <p class="card-text">Appoinment Status:{{patient.status}}</p>
                     <a href="{%url 'cancelappoinment' patient.id%}" class="btn btn-danger"> Cancel Appoinment</a>
                 </div>

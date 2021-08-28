@@ -5,6 +5,8 @@ from patient import forms
 from doctor.models import Doctors
 from .models import Patients
 from django.views.generic import TemplateView,ListView,DetailView,CreateView,DeleteView
+from django.utils.decorators import method_decorator
+from .decorators import sign_in_requierd
 
 
 # registration
@@ -42,25 +44,30 @@ class SigninView(TemplateView):
             user=authenticate(request,username=username,password=password)
             if user:
                 login(request,user)
+                if user.is_superuser:
+                    return redirect("home")
                 return redirect("patienthome")
             else:
                 self.context["form"] = form
                 return render(request, self.template_name, self.context)
 
+@method_decorator(sign_in_requierd,name="dispatch")
 class SignOutView(TemplateView):
     def get(self,request, *args, **kwargs):
         logout(request)
         return redirect("signin")
 
-
+@method_decorator(sign_in_requierd,name="dispatch")
 class PatientHome(TemplateView):
     template_name="patient_home.html"
 
+@method_decorator(sign_in_requierd,name="dispatch")
 class DoctorsView(ListView):
     template_name = "doctorsdetail.html"
     model = Doctors
     context_object_name = "doctors"
 
+@method_decorator(sign_in_requierd,name="dispatch")
 class PatientFillUpForm(CreateView):
     model = Patients
     template_name = "patient_fillupform.html" #createview will render the form in the html
@@ -78,6 +85,7 @@ class PatientFillUpForm(CreateView):
             patient.save()
             return redirect("patienthome")
 
+@method_decorator(sign_in_requierd,name="dispatch")
 class AppoinmentStatusView(ListView):
     template_name = "appoinment_status.html"
     model = Patients
@@ -87,6 +95,7 @@ class AppoinmentStatusView(ListView):
         queryset=self.model.objects.filter(user=self.request.user)
         return queryset
 
+@method_decorator(sign_in_requierd,name="dispatch")
 class CancelAppoinmentView(DeleteView):
     model=Patients
     def get(self, request, *args, **kwargs):
